@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import "@fontsource/montserrat";
 
 const NavComponent = styled.nav`
   width: 100%;

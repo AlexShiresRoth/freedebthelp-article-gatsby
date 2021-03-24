@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import "@fontsource/montserrat";
 const FooterSection = styled.footer`
   width: 100%;
   background: #eee;
