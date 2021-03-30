@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const Section = styled.section`
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,11 +26,26 @@ const InnerSection = styled.div`
   }
 `;
 const Column = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 0.3rem 0;
   @media screen and (max-width: 900px) {
     margin: 0.2rem 0;
   }
 `;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  margin: 0.3rem 0;
+  @media screen and (max-width: 900px) {
+    margin: 0.2rem 0;
+    flex-direction: column;
+  }
+`;
+
 const HeadLine = styled.h1`
   font-family: Raleway;
   font-weight: 800;
@@ -44,9 +59,9 @@ const HeadLine = styled.h1`
 `;
 const SubHeadLine = styled.h4`
   font-family: Montserrat;
-  font-weight: 700;
+  font-weight: 200;
   line-height: 1;
-  font-size: 0.8em;
+  font-size: 1em;
   color: #999;
   margin: 0.2rem 0;
   @media screen and (max-width: 900px) {
@@ -65,14 +80,15 @@ const Avatar = styled.img`
 `;
 
 const Text = styled.p`
-  color: #666;
+  color: #333;
   font-family: Montserrat;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.3;
   @media screen and (max-width: 900px) {
     font-size: 18px;
     margin: 0.2rem 0;
     line-height: 1.5;
+    max-width: 100%;
   }
 `;
 const ImageContainer = styled.div`
@@ -98,7 +114,69 @@ const Button = styled.button`
   font-weight: 800;
   font-size: 16px;
   box-shadow: 0 1px 30px #eee;
+  transition: all 0.3s ease;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 1px 30px #eee;
+    background: green;
+  }
 `;
+const Separator = styled.div`
+  width: 100%;
+  height: 1px;
+  background: #58699431;
+  display: block;
+`;
+
+const ImgContainer = styled.div`
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 30px #eee;
+  border: 1px solid #eee;
+  padding: 0.5rem;
+  margin: 0;
+  & img {
+    object-fit: contain;
+    max-width: 100%;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  @media screen and (max-width: 900px) {
+    max-width: 100%;
+    margin: 1rem 0;
+  }
+`;
+const Btn = styled.button`
+  background: green;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: 0;
+  color: #fff;
+  margin-top: 1rem;
+  font-weight: 700;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+const data = [
+  {
+    imgSrc:
+      "https://res.cloudinary.com/fillthevoidio/image/upload/v1617112900/debthelp/debt-ad_ay8tix.jpg",
+    btnText: "Get Help",
+  },
+  {
+    imgSrc:
+      "https://res.cloudinary.com/fillthevoidio/image/upload/v1617112900/debthelp/debt-ad-3_srf2te.jpg",
+    btnText: null,
+  },
+  {
+    imgSrc:
+      "https://res.cloudinary.com/fillthevoidio/image/upload/v1617112900/debthelp/debt-ad2_i8c1cg.jpg",
+    btnText: "Click Here",
+  },
+];
 
 const LeftColumn = () => {
   const [avatar, setAvatar] = useState("");
@@ -142,20 +220,23 @@ const LeftColumn = () => {
           <SubHeadLine>
             By: Dave Kurtz <Avatar src={avatar.results[0].picture.thumbnail} />
           </SubHeadLine>
-          <IconRow>
-            <FontAwesomeIcon icon={faFacebook} style={{ ...Icons }} />
-            <FontAwesomeIcon icon={faInstagram} style={{ ...Icons }} />
-            <FontAwesomeIcon icon={faTwitter} style={{ ...Icons }} />
-            <FontAwesomeIcon icon={faGoogle} style={{ ...Icons }} />
-          </IconRow>
+          <Separator />
         </Column>
-        <Column>
+        <Row>
           <ImageContainer>
             <Image
               src={`https://res.cloudinary.com/fillthevoidio/image/upload/v1616531614/debthelp/ewdgfarsgfsfr_gklg76.jpg`}
             />
           </ImageContainer>
-        </Column>
+          <ImgContainer
+            onPointerDown={() =>
+              (window.location.href = "https://freedebthelpplan.com/index.php")
+            }
+          >
+            <img src={data[1].imgSrc} />
+            {data[1].btnText && <Btn>{data[1].btnText}</Btn>}
+          </ImgContainer>
+        </Row>
         <Column>
           <Text>
             <strong>Bethesda, MD March 22, 2021</strong> – While millions of
@@ -164,13 +245,21 @@ const LeftColumn = () => {
             been discussing eliminating student loans for those same illegals.
           </Text>
         </Column>
-        <Column>
+        <Row>
           <ImageContainer>
             <Image
               src={`https://res.cloudinary.com/fillthevoidio/image/upload/v1616531933/debthelp/dsadfsfsdf_wieflf.jpg`}
             />
           </ImageContainer>
-        </Column>
+          <ImgContainer
+            onPointerDown={() =>
+              (window.location.href = "https://freedebthelpplan.com/index.php")
+            }
+          >
+            <img src={data[0].imgSrc} />
+            {data[0].btnText && <Btn>{data[0].btnText}</Btn>}
+          </ImgContainer>
+        </Row>
         <Column>
           <Text>
             This made us mad so we poured over thousands of bills, and records
@@ -203,7 +292,7 @@ const LeftColumn = () => {
             of that debt than anyone else.
           </Text>
         </Column>
-        <Column>
+        <Row>
           <Button
             onPointerDown={() =>
               (window.location.href = "https://freedebthelpplan.com/index.php")
@@ -211,7 +300,15 @@ const LeftColumn = () => {
           >
             Click here and get your free debt help plan.
           </Button>
-        </Column>
+          <ImgContainer
+            onPointerDown={() =>
+              (window.location.href = "https://freedebthelpplan.com/index.php")
+            }
+          >
+            <img src={data[2].imgSrc} />
+            {data[2].btnText && <Btn>{data[2].btnText}</Btn>}
+          </ImgContainer>
+        </Row>
       </InnerSection>
     </Section>
   );

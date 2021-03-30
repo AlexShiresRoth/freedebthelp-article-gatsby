@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 const FooterSection = styled.footer`
   width: 100%;
   background: #eee;
@@ -7,6 +8,7 @@ const FooterSection = styled.footer`
   flex-direction: column;
   align-items: center;
   margin-top: 0.5rem;
+  box-shadow: 0 0 0 5px #b4c4ae;
 `;
 const Inner = styled.div`
   width: 90%;
@@ -14,7 +16,7 @@ const Inner = styled.div`
   flex-direction: column;
 `;
 const Paragraph = styled.p`
-  font-size: 20px;
+  font-size: 14px;
   color: #666;
   font-family: Montserrat;
 `;

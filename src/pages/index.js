@@ -2,7 +2,6 @@ import * as React from "react";
 import Nav from "../components/Nav";
 import styled from "styled-components";
 import LeftColumn from "../components/LeftColumn";
-import RightColumn from "../components/RightColumn";
 import Footer from "../components/Footer";
 
 const Main = styled.section`
@@ -35,7 +34,6 @@ const IndexPage = () => {
         <Nav logo={logo} />
         <Content>
           <LeftColumn />
-          <RightColumn />
         </Content>
         <Footer />
       </Inner>
